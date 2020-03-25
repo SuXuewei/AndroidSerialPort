@@ -1,0 +1,42 @@
+{
+  "stringTable": {
+    "0": "D:/Landi/ServiceWorkSpace/BCM_BJ/android/serialPort/AndroidSerialPort/SerialPortLibrary/.cxx/cmake/debug/x86",
+    "1": "--target=i686-none-linux-android19 --gcc-toolchain=E:/android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=E:/android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DSerialPort_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "E:\\android\\sdk\\ndk\\21.0.6113669\\build\\cmake\\android.toolchain.cmake",
+    "E:\\android\\sdk\\ndk\\21.0.6113669\\build\\cmake\\platforms.cmake",
+    "D:\\Landi\\ServiceWorkSpace\\BCM_BJ\\android\\serialPort\\AndroidSerialPort\\SerialPortLibrary\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "E:\\android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Landi\\ServiceWorkSpace\\BCM_BJ\\android\\serialPort\\AndroidSerialPort\\SerialPortLibrary\\.cxx\\cmake\\debug\\x86\" clean"
+  ],
+  "buildTargetsCommand": "E:\\android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"D:\\Landi\\ServiceWorkSpace\\BCM_BJ\\android\\serialPort\\AndroidSerialPort\\SerialPortLibrary\\.cxx\\cmake\\debug\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "SerialPort-Debug-x86": {
+      "buildCommand": "E:\\android\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\Landi\\ServiceWorkSpace\\BCM_BJ\\android\\serialPort\\AndroidSerialPort\\SerialPortLibrary\\.cxx\\cmake\\debug\\x86\" SerialPort",
+      "buildType": "debug",
+      "toolchain": "1264160915",
+      "abi": "x86",
+      "artifactName": "SerialPort",
+      "files": [
+        {
+          "src": "D:\\Landi\\ServiceWorkSpace\\BCM_BJ\\android\\serialPort\\AndroidSerialPort\\SerialPortLibrary\\src\\main\\cpp\\SerialPort.c",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "D:\\Landi\\ServiceWorkSpace\\BCM_BJ\\android\\serialPort\\AndroidSerialPort\\SerialPortLibrary\\build\\intermediates\\cmake\\debug\\obj\\x86\\libSerialPort.so"
+    }
+  },
+  "toolchains": {
+    "1264160915": {
+      "cCompilerExecutable": "E:\\android\\sdk\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}
