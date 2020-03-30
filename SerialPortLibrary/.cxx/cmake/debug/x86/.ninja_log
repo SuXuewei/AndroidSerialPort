@@ -1,0 +1,4 @@
+# ninja log v5
+0	112	0	clean	e45b56c78fb2b078
+0	561	607236311	CMakeFiles/SerialPort.dir/SerialPort.c.o	f37b2015ddf9c8af
+562	1301	607236312	D:/Landi/ServiceWorkSpace/BCM_BJ/android/serialPort/AndroidSerialPort/SerialPortLibrary/build/intermediates/cmake/debug/obj/x86/libSerialPort.so	dbd6f79c04aa4dc4

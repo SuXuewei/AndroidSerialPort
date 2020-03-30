@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.kongqw.serialport.util.ByteUtil;
 import com.kongqw.serialportlibrary.listener.OnOpenSerialPortListener;
 import com.kongqw.serialportlibrary.listener.OnSerialPortDataListener;
 import com.kongqw.serialportlibrary.Device;
@@ -58,16 +59,19 @@ public class SerialPortActivity extends AppCompatActivity implements OnOpenSeria
                     public void onDataSent(byte[] bytes) {
                         Log.i(TAG, "onDataSent [ byte[] ]: " + Arrays.toString(bytes));
                         Log.i(TAG, "onDataSent [ String ]: " + new String(bytes));
-                        final byte[] finalBytes = bytes;
+                        //final byte[] finalBytes = bytes;
+                        final String sendData = ByteUtil.bytes2HexString(bytes);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                showToast(String.format("发送\n%s", new String(finalBytes)));
+                                //showToast(String.format("发送\n%s", new String(finalBytes)));
+
+                                showToast(String.format("发送\n%s", new String(sendData)));
                             }
                         });
                     }
                 })
-                .openSerialPort(device.getFile(), 115200);
+                .openSerialPort(device.getFile(), 9600);
 
         Log.i(TAG, "onCreate: openSerialPort = " + openSerialPort);
     }
@@ -147,7 +151,8 @@ public class SerialPortActivity extends AppCompatActivity implements OnOpenSeria
             return;
         }
 
-        byte[] sendContentBytes = sendContent.getBytes();
+        sendContent = "02000A01013131303135313939030C";
+        byte[] sendContentBytes = ByteUtil.hexString2Bytes(sendContent);
 
         boolean sendBytes = mSerialPortManager.sendBytes(sendContentBytes);
         Log.i(TAG, "onSend: sendBytes = " + sendBytes);
