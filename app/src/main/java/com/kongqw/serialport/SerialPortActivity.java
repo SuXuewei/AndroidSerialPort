@@ -19,7 +19,7 @@ import com.kongqw.serialportlibrary.SerialPortManager;
 import java.io.File;
 import java.util.Arrays;
 
-public class SerialPortActivity extends AppCompatActivity implements OnOpenSerialPortListener {
+public class SerialPortActivity extends AppCompatActivity implements OnOpenSerialPortListener, OnSerialPortDataListener {
 
     private static final String TAG = SerialPortActivity.class.getSimpleName();
     public static final String DEVICE = "device";
@@ -41,39 +41,55 @@ public class SerialPortActivity extends AppCompatActivity implements OnOpenSeria
 
         // 打开串口
         boolean openSerialPort = mSerialPortManager.setOnOpenSerialPortListener(this)
-                .setOnSerialPortDataListener(new OnSerialPortDataListener() {
-                    @Override
-                    public void onDataReceived(byte[] bytes) {
-                        Log.i(TAG, "onDataReceived [ byte[] ]: " + Arrays.toString(bytes));
-                        Log.i(TAG, "onDataReceived [ String ]: " + new String(bytes));
-                        final byte[] finalBytes = bytes;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                showToast(String.format("接收\n%s", new String(finalBytes)));
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onDataSent(byte[] bytes) {
-                        Log.i(TAG, "onDataSent [ byte[] ]: " + Arrays.toString(bytes));
-                        Log.i(TAG, "onDataSent [ String ]: " + new String(bytes));
-                        //final byte[] finalBytes = bytes;
-                        final String sendData = ByteUtil.bytes2HexString(bytes);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //showToast(String.format("发送\n%s", new String(finalBytes)));
-
-                                showToast(String.format("发送\n%s", new String(sendData)));
-                            }
-                        });
-                    }
-                })
-                .openSerialPort(device.getFile(), 9600);
+                 .setOnSerialPortDataListener(this)
+//                .setOnSerialPortDataListener(new OnSerialPortDataListener() {
+//                    @Override
+//                    public void onDataReceived(byte[] bytes) {
+//                        Log.i(TAG, "onDataReceived [ byte[] ]: " + Arrays.toString(bytes));
+//                        Log.i(TAG, "onDataReceived [ String ]: " + new String(bytes));
+//                        final byte[] finalBytes = bytes;
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                showToast(String.format("接收\n%s", new String(finalBytes)));
+//                            }
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void onDataSent(byte[] bytes) {
+//                        Log.i(TAG, "onDataSent [ byte[] ]: " + Arrays.toString(bytes));
+//                        Log.i(TAG, "onDataSent [ String ]: " + new String(bytes));
+//                        //final byte[] finalBytes = bytes;
+//                        final byte[] finalBytes = ByteUtil.bytes2HexString(bytes).getBytes();
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                showToast(String.format("发送\n%s", new String(finalBytes)));
+//                            }
+//                        });
+//                    }
+//                })
+                .openSerialPort(new File("/dev/ttyGS0"), 9600);
+                //.openSerialPort(device.getFile(), 9600);
 
         Log.i(TAG, "onCreate: openSerialPort = " + openSerialPort);
+    }
+
+    @Override
+    public void onDataReceived(byte[] bytes) {
+        Log.i(TAG, "[new] onDataReceived [ byte[] ]: " + Arrays.toString(bytes));
+        Log.i(TAG, "[new] onDataReceived [ String ]: " + new String(bytes));
+        final byte[] finalBytes = bytes;
+        showToast(String.format("接收\n%s", new String(finalBytes)));
+    }
+
+    @Override
+    public void onDataSent(byte[] bytes) {
+        Log.i(TAG, "[new] onDataSent [ byte[] ]: " + Arrays.toString(bytes));
+        Log.i(TAG, "[new] onDataSent [ String ]: " + new String(bytes));
+        final byte[] finalBytes = bytes;
+        showToast(String.format("发送\n%s", new String(finalBytes)));
     }
 
     @Override

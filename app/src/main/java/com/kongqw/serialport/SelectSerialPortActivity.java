@@ -25,7 +25,6 @@ public class SelectSerialPortActivity extends AppCompatActivity implements Adapt
 
         ListView listView = (ListView) findViewById(R.id.lv_devices);
 
-
         SerialPortFinder serialPortFinder = new SerialPortFinder();
 
         ArrayList<Device> devices = serialPortFinder.getDevices();
@@ -36,7 +35,6 @@ public class SelectSerialPortActivity extends AppCompatActivity implements Adapt
             listView.setAdapter(mDeviceAdapter);
             listView.setOnItemClickListener(this);
         }
-
     }
 
     @Override
