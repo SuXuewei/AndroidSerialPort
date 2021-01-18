@@ -72,6 +72,28 @@ static speed_t getBaudrate(jint baudrate)
  * Class:     android_serialport_SerialPort
  * Method:    open
  * Signature: (Ljava/lang/String;II)Ljava/io/FileDescriptor;
+ * 函数名称：Java_com_kongqw_serialportlibrary_SerialPort_open
+ * 			JNI命名规范，Java_开头
+ * 			后面跟着包名 com_kongqw_serialportlibrary_(com.konggw.serialportlibray)
+ * 			后面跟着类名 SerialPort_
+ * 			最后是方法名称 open
+ * 			这个按照这个命名协定，com.kongqw.serialportlibrary包下面的
+ * 			类SerialPort的open方法就是用该动态库提供的方法实现
+ * 参数说明：JNIEnv *env - 有系统提供的入参 (pointer to array of pointers to JNI functions)
+ * 						  VM提供的jni环境，通过它可以调用java类和方法,它指向JNI的函数列表，类似C++的虚函数
+ * 						  eg. const char *pcBuf = (*env)->GetStringUTFChars(env, path, JNI_TRUE)
+ *          jclass SerialPort - 由系统提供的入参，类指针，类似this指针
+ *          					JNI接口主要是用其它语言实现java的类成员函数
+ *          					作为类成员函数获取this指针是很正常,具体如何用带进一步了解
+ *			jstring path - 函数的入参，需要调用函数时传入
+ *						   文件路径名
+ *		    jint baudrate - 函数的入参，需要调用函数时传入
+ *		    				打开串口的波特率
+ *		    jint flags - 函数的入参，需要调用函数时传入
+ *
+ *		    注：与java交互的数据接口类型一律用j开头的数据类型，本地使用的变量就按正常变成一样就可以
+ * 参考：https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/design.html#wp9502
+ * 		key: Resolving Native Method Names
  */
 JNIEXPORT jobject JNICALL Java_com_kongqw_serialportlibrary_SerialPort_open
   (JNIEnv *env, jclass thiz, jstring path, jint baudrate, jint flags)
